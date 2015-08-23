@@ -1,0 +1,75 @@
+---
+title       : Chicago Weather Events
+subtitle    : Exploration of Events by Decade
+author      :
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : impressjs
+  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+## Purpose
+
+
+
+* Visualization of where events were reported
+* Easy to use selection of relevant events
+* Build an application that an be extended to other datasets.
+* Provide basic information about the relevant data 
+
+
+--- .class1 #id1 bg:yellow
+
+
+## Numerically Speaking....
+
+The percent of a specific event type by decade is summarized in the following table --
+
+
+```{r, echo=FALSE}
+library(lubridate)
+weather<-read.table("chiweather.csv", header=TRUE, stringsAsFactors=FALSE, sep=",")
+weather <- weather[weather$LONGITUDE!=0&weather$LONGITUDE<(8900),]
+weather <-weather[weather$LATITUDE!=0,]
+weather$LATITUDE <- weather$LATITUDE/100
+weather$LONGITUDE <- weather$LONGITUDE/-100
+datesplit<- strsplit(weather$BGN_DATE, " ")
+	dec<-list()
+for(i in datesplit) {
+	yr<-year(mdy(gsub("/","-",i[1])))
+
+             if(yr>=1950&yr<1960) dec<-c(dec, "1950s")
+             if(yr>=1960&yr<1970) dec<-c(dec, "1960s")
+           if(yr>=1970&yr<1980) dec<-c(dec, "1970s")
+              if(yr>=1980&yr<1990) dec<-c(dec, "1980s")
+             if(yr>=1990&yr<2000) dec<-c(dec, "1990s")
+             if(yr>=2000&yr<2010) dec<-c(dec, "2000s")                                                   
+             if(yr>=2010&yr<2020) dec<-c(dec, "2010s")       
+
+	
+	}
+weather$DEC<-dec
+weather$EVTYPE<-as.factor(weather$EVTYPE)
+weather$DEC<-as.factor(as.character(weather$DEC))
+ try<-data.frame(Event=weather$EVTYPE, Decade=weather$DEC)
+ tbl<-addmargins(table(try))
+round((tbl/nrow(weather))*100,2)
+```
+However this gives not information about the location of the event.
+
+--- .class #id 
+
+## The Application
+
+* Allows the user to choose the specific events and decades relevant to them.
+* View the percent of the total events represented
+* View on a map the location of these events.
+
+--- .class #id 
+
+## Summary
+
+The app allows users to select and view relevant data and statistics about weather in Chicagoland.
+

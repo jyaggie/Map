@@ -1,0 +1,124 @@
+library(swirl)
+swirl()
+library(swirl)
+swirl()
+myplot(2)
+swirl()
+mean(8)
+32/sqrt(10)
+1
+10/sqrt(100)=1
+10/sqrt(100)
+2/1
+swirl()
+pt(q=2.5, df=15, lower.tail=FALSE)
+qnorm(95)
+qnorm(.95)
+qnorm(.99)
+library(plyr)
+library(dplyr)
+swirl()
+install.packages("devtools")
+swirl()
+library(devtools)
+library(ggplot2)#
+    x <- seq(-8,8, length = 2000)#
+    dat <- data.frame(x=x, y=dnorm(x,sd=2))#
+    g <- ggplot(dat, aes(x = x, y = y)) + geom_line(size = 1.5)+scale_y_continuous(limits=c(0,max(dat$y)))#
+    g <- g + layer("area", mapping = aes( x=ifelse(x>qnorm(.95,sd=2),x,NA)), geom_params=list(fill="red",alpha=.5))#
+    print(g)
+devtools::install_github("hadley/plyr")
+library(ggplot2)#
+    x <- seq(-8,8, length = 2000)#
+    dat <- data.frame(x=x, y=dnorm(x,sd=2))#
+    g <- ggplot(dat, aes(x = x, y = y)) + geom_line(size = 1.5)+scale_y_continuous(limits=c(0,max(dat$y)))#
+    g <- g + layer("area", mapping = aes( x=ifelse(x>qnorm(.95,sd=2),x,NA)), geom_params=list(fill="red",alpha=.5))#
+    print(g)
+devtools::install_github("hadley/plyr")
+R.home("etc")
+devtools::install_github("hadley/plyr")
+library(slidify)
+slidify()
+slidify("index.Pnd")
+slidify("index.Rmd")
+library(lubridate)#
+weather<-read.table("chiweather.csv", header=TRUE, stringsAsFactors=FALSE, sep=",")#
+weather <- weather[weather$LONGITUDE!=0&weather$LONGITUDE<(8900),]#
+weather <-weather[weather$LATITUDE!=0,]#
+weather$LATITUDE <- weather$LATITUDE/100#
+weather$LONGITUDE <- weather$LONGITUDE/-100#
+datesplit<- strsplit(weather$BGN_DATE, " ")#
+yr<-list()#
+for(i in datesplit) {yr<-c(yr,year(mdy(gsub("/","-",i[1]))))}#
+weather$YEAR<-yr#
+weather$EVTYPE<-as.factor(weather$EVTYPE)
+table(weather)
+try<-data.frame(weather$EVTYPE, weather$YEAR)
+table(try)
+chk<-"string"
+chk[1]
+chk[1,1]
+chk[0]
+calendar <- f(year) {#
+  start <- ymd(paste0(year, "0101"))#
+  start + days(0:(364 + leap_year(start)))#
+}
+calendar <- function(year) {#
+  start <- ymd(paste0(year, "0101"))#
+  start + days(0:(364 + leap_year(start)))#
+}
+calendar(1968)
+datesplit<- strsplit(weather$BGN_DATE, " ")#
+	dec<-list()#
+for(i in datesplit) {#
+	yr<-year(mdy(gsub("/","-",i[1])))#
+#
+             if(yr>=1950&yr<1960) dec<-c(dec, "1950s")#
+             if(yr>=1960&yr<1970) dec<-c(dec, "1960s")#
+           if(yr>=1970&yr<1980) dec<-c(dec, "1970s")#
+              if(yr>=1980&yr<1990) dec<-c(dec, "1980s")#
+             if(yr>=1990&yr<2000) dec<-c(dec, "1990s")#
+             if(yr>=2000&yr<2010) dec<-c(dec, "2000s")                                                   #
+             if(yr>=2010&yr<2020) dec<-c(dec, "2010s")       #
+	}#
+weather$DEC<-dec#
+weather$EVTYPE<-as.factor(weather$EVTYPE)#
+weather$DEC<-as.factor(weather$DEC)
+datesplit<- strsplit(weather$BGN_DATE, " ")#
+	dec<-list()#
+for(i in datesplit) {#
+	yr<-year(mdy(gsub("/","-",i[1])))#
+#
+             if(yr>=1950&yr<1960) dec<-c(dec, "1950s")#
+             if(yr>=1960&yr<1970) dec<-c(dec, "1960s")#
+           if(yr>=1970&yr<1980) dec<-c(dec, "1970s")#
+              if(yr>=1980&yr<1990) dec<-c(dec, "1980s")#
+             if(yr>=1990&yr<2000) dec<-c(dec, "1990s")#
+             if(yr>=2000&yr<2010) dec<-c(dec, "2000s")                                                   #
+             if(yr>=2010&yr<2020) dec<-c(dec, "2010s")       #
+	}
+weather$DEC<-dec
+weather$EVTYPE<-as.factor(weather$EVTYPE)
+weather$DEC<-as.factor(weather$DEC)
+weather$DEC<-as.factor(as.character(weather$DEC))
+weather$DEC<-as.factor(as.character(weather$DEC))
+try<-data.frame(weather$EVTYPE, weather$DEC)
+table(try)
+slidify("index.Rmd")
+table(round((try/nrow(weather))*10,2))
+table(try)/nrows(weather)
+table(try)/nrow(weather)
+table(try)/nrow(weather)*10
+(table(try)/nrow(weather))*10
+(table(try)/nrow(weather))*100
+round((table(try)/nrow(weather))*100,2)
+addmargins(table(try))
+round((tbl/nrow(weather))*100,2)
+tbl<-addmargins(table(try))#
+round((tbl/nrow(weather))*100,2)
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
+slidify("index.Rmd")
